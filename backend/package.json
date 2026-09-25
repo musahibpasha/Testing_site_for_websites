@@ -1,0 +1,17 @@
+{
+  "name": "webguard-backend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --watch-path=./routes --watch-path=./services --watch-path=./utils --watch-path=./server.js server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.22.3",
+    "nanoid": "^5.0.7",
+    "puppeteer": "^22.13.1"
+  }
+}

@@ -1,0 +1,68 @@
+.wg-urlinput {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 20px;
+  position: relative;
+  width: 100%;
+}
+
+.wg-urlinput__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.wg-urlinput__row--prompt {
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  padding-top: 12px;
+  overflow: hidden;
+}
+
+.wg-urlinput__prefix {
+  font-family: var(--font-display), sans-serif;
+  color: var(--cyan);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.wg-urlinput input {
+  flex: 1;
+  min-width: 180px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.95rem;
+}
+
+.wg-urlinput input::placeholder {
+  color: var(--text-dim);
+}
+
+.wg-urlinput__btn {
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: 1px solid var(--cyan);
+  background: linear-gradient(135deg, rgba(4, 23, 25, 0.15), rgba(124, 77, 255, 0.15));
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.wg-urlinput__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.wg-urlinput__error {
+  position: absolute;
+  bottom: -22px;
+  left: 20px;
+  font-size: 0.75rem;
+  color: var(--red);
+}

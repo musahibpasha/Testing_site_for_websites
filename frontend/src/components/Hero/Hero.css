@@ -1,0 +1,28 @@
+.wg-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 72px 24px 48px;
+}
+
+.wg-hero__copy h2 {
+  font-size: 2.4rem;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.wg-hero__copy p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 900px) {
+  .wg-hero {
+    grid-template-columns: 1fr;
+  }
+  .wg-hero__copy h2 { font-size: 1.9rem; }
+}

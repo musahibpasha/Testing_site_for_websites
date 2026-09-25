@@ -1,0 +1,41 @@
+.wg-assistant3d {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, rgba(124, 77, 255, 0.12), transparent 70%);
+}
+
+.wg-assistant3d canvas {
+  outline: none;
+}
+
+.wg-assistant3d__label {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: var(--font-display), sans-serif;
+  color: var(--text-primary);
+  letter-spacing: 0.12em;
+  pointer-events: none;
+}
+
+.wg-assistant3d__label span {
+  display: block;
+  font-size: 0.85rem;
+}
+
+.wg-assistant3d__label small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .wg-assistant3d { height: 320px; }
+}

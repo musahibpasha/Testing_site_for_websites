@@ -1,0 +1,72 @@
+:root {
+  --bg-void: #05070d;
+  --bg-panel: #0b0f1a;
+  --bg-panel-alt: #10182b;
+  --border-glow: rgba(0, 229, 255, 0.25);
+  --cyan: #00e5ff;
+  --violet: #7c4dff;
+  --magenta: #ff3ec8;
+  --green: #081310;
+  --amber: #ffb020;
+  --red: #ff4d6d;
+  --text-primary: #e8edf9;
+  --text-dim: #7d8aa8;
+  --font-display: "Orbitron", "Segoe UI", sans-serif;
+  --font-body: "Rajdhani", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(124, 77, 255, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(0, 229, 255, 0.1), transparent 40%),
+    linear-gradient(180deg, #05070d 0%, #070a14 100%);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(16, 24, 43, 0.75), rgba(11, 15, 26, 0.85));
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.06), inset 0 0 40px rgba(124, 77, 255, 0.04);
+}
+
+.glow-text {
+  color: var(--cyan);
+  text-shadow: 0 0 8px rgba(26, 143, 161, 0.6);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+button {
+  font-family: var(--font-display), sans-serif;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 4px; }

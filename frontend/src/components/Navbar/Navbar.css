@@ -1,0 +1,90 @@
+.wg-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 16px 0;
+  background: rgba(5, 7, 13, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-glow);
+}
+
+.wg-navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wg-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wg-navbar__logo {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cyan), var(--violet));
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+.wg-navbar__brand h1 {
+  font-size: 1.25rem;
+  letter-spacing: 0.12em;
+}
+
+.wg-navbar__links {
+  display: flex;
+  gap: 28px;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.wg-navbar__links a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.wg-navbar__links a:hover {
+  color: var(--cyan);
+}
+
+.wg-navbar__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  border: 1px solid var(--border-glow);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.wg-navbar__status .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.wg-navbar__status--crawling .dot,
+.wg-navbar__status--testing .dot,
+.wg-navbar__status--analyzing .dot {
+  background: var(--amber);
+  box-shadow: 0 0 8px var(--amber);
+}
+
+.wg-navbar__status--done .dot {
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+
+.wg-navbar__status--error .dot {
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red);
+}
+
+@media (max-width: 720px) {
+  .wg-navbar__links { display: none; }
+}

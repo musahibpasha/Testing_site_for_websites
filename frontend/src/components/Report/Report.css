@@ -1,0 +1,270 @@
+.wg-report { padding: 32px 24px 96px; }
+
+.wg-report__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.wg-report__header h3 { font-size: 1.1rem; font-weight: 500; }
+
+.wg-report__reset {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--violet);
+  background: rgba(124, 77, 255, 0.12);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+/* ---------- Scorecard ---------- */
+.wg-scorecard {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+
+.wg-score {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 3px solid var(--text-dim);
+}
+
+.wg-score__value { font-size: 2rem; font-weight: 600; font-family: var(--font-display), sans-serif; }
+.wg-score__max { font-size: 0.85rem; color: var(--text-dim); margin-left: 2px; }
+
+.wg-score--excellent { border-color: var(--green); box-shadow: 0 0 18px rgba(0, 255, 178, 0.25); }
+.wg-score--excellent .wg-score__value { color: var(--green); }
+
+.wg-score--good { border-color: var(--cyan); box-shadow: 0 0 18px rgba(0, 229, 255, 0.2); }
+.wg-score--good .wg-score__value { color: var(--cyan); }
+
+.wg-score--needs-work { border-color: var(--amber); box-shadow: 0 0 18px rgba(255, 176, 32, 0.2); }
+.wg-score--needs-work .wg-score__value { color: var(--amber); }
+
+.wg-score--poor { border-color: var(--red); box-shadow: 0 0 18px rgba(255, 77, 109, 0.25); }
+.wg-score--poor .wg-score__value { color: var(--red); }
+
+.wg-scorecard__details { flex: 1; }
+
+.wg-scorecard__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.wg-scorecard__label--excellent { color: var(--green); }
+.wg-scorecard__label--good { color: var(--cyan); }
+.wg-scorecard__label--needs-work { color: var(--amber); }
+.wg-scorecard__label--poor { color: var(--red); }
+
+.wg-scorecard__summary {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.wg-scorecard__counts {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wg-count {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.wg-count--critical { color: var(--red); }
+.wg-count--warning { color: var(--amber); }
+.wg-count--info { color: var(--cyan); }
+
+/* ---------- Target Feature Audit Result Card ---------- */
+.wg-feature-result {
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(124, 77, 255, 0.25);
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.08), rgba(0, 229, 255, 0.04));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.wg-feature-result__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wg-feature-result__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wg-feature-result__badge {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.72rem;
+  color: var(--cyan);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wg-feature-result__title-group h4 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.wg-feature-result__status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.wg-feature-result__status--pass {
+  color: var(--green);
+  background: rgba(0, 255, 178, 0.1);
+  border: 1px solid rgba(0, 255, 178, 0.3);
+}
+
+.wg-feature-result__status--warning {
+  color: var(--amber);
+  background: rgba(255, 176, 32, 0.1);
+  border: 1px solid rgba(255, 176, 32, 0.3);
+}
+
+.wg-feature-result__status--fail {
+  color: var(--red);
+  background: rgba(255, 77, 109, 0.1);
+  border: 1px solid rgba(255, 77, 109, 0.3);
+}
+
+.wg-feature-result__eval {
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- Category groups ---------- */
+.wg-report__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wg-category { padding: 20px 24px; }
+
+.wg-category__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-glow);
+}
+
+.wg-category__header h4 { font-size: 1rem; }
+
+.wg-category__count {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wg-severity-group { margin-bottom: 16px; }
+.wg-severity-group:last-child { margin-bottom: 0; }
+
+.wg-severity-group__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.wg-severity-group__label--critical { color: var(--red); }
+.wg-severity-group__label--warning { color: var(--amber); }
+.wg-severity-group__label--info { color: var(--cyan); }
+
+.wg-report__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wg-report__empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+/* ---------- Bug card ---------- */
+.wg-bug-card {
+  padding: 16px 18px;
+  border-left: 3px solid var(--text-dim);
+}
+
+.wg-bug-card--critical { border-left-color: var(--red); }
+.wg-bug-card--warning { border-left-color: var(--amber); }
+.wg-bug-card--info { border-left-color: var(--cyan); }
+
+.wg-bug-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.wg-bug-card p {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+
+.wg-bug-card code {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.wg-bug-card__fix {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: rgba(0, 255, 178, 0.06);
+  border: 1px solid rgba(0, 255, 178, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+@media (max-width: 640px) {
+  .wg-scorecard { flex-direction: column; align-items: flex-start; }
+}

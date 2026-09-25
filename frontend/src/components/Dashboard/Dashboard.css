@@ -1,0 +1,103 @@
+.wg-dashboard { padding: 32px 24px 64px; }
+
+.wg-dashboard__header {
+  margin-bottom: 20px;
+}
+
+.wg-dashboard__header h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.wg-progress {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.wg-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--violet), var(--cyan));
+  box-shadow: 0 0 12px var(--cyan);
+  transition: width 0.5s ease;
+}
+
+.wg-dashboard__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 20px;
+}
+
+.wg-dashboard__grid h4 {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.wg-dashboard__checks,
+.wg-dashboard__logs,
+.wg-dashboard__stats {
+  padding: 18px;
+}
+
+.wg-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wg-check__state {
+  margin-left: auto;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.wg-check__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.wg-check--active .wg-check__dot { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.wg-check--done .wg-check__dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.wg-check--error .wg-check__dot { background: var(--red); box-shadow: 0 0 8px var(--red); }
+
+.wg-dashboard__logbody {
+  height: 220px;
+  overflow-y: auto;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.wg-log-line {
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+}
+
+.wg-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wg-stat strong { color: var(--text-primary); }
+.wg-stat--critical { color: var(--red) !important; }
+.wg-stat--warning { color: var(--amber) !important; }
+
+@media (max-width: 900px) {
+  .wg-dashboard__grid { grid-template-columns: 1fr; }
+}
