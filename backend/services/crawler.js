@@ -76,13 +76,17 @@ export async function crawlPage(url, { log, jobId, prompt } = {}) {
         url: req.url(),
         reason: req.failure()?.errorText,
       });
-      addConsoleError(`Failed to load resource: ${req.failure()?.errorText || "request failed"} (${req.url()})`);
+      // NOTE: previously also called addConsoleError() here with a
+      // synthesized "Failed to load resource..." message. That created a
+      // second bug for the exact same failure — this one has the real
+      // URL/status already, so the console duplicate added nothing but
+      // noise. Removed.
     });
 
     page.on("response", (res) => {
       if (res.status() >= 400) {
         findings.failedRequests.push({ url: res.url(), status: res.status() });
-        addConsoleError(`Failed to load resource: the server responded with a status of ${res.status()} (${res.url()})`);
+        // Same reasoning as above — no synthetic console duplicate.
       }
     });
 

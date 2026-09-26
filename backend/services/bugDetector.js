@@ -2,28 +2,65 @@
  * Turns raw crawl findings into structured bug objects the
  * frontend Report component knows how to render.
  */
+
+// Domains for third-party analytics/tracking/monitoring scripts. When
+// these fail, nothing breaks for an actual user of the site — the
+// vendor's own beacon just didn't land — so these get downgraded to
+// "info" instead of "critical". A first-party API failing never matches
+// this; it's about the *purpose* of the request, not who owns it.
+const THIRD_PARTY_NOISE = /(optimizely|google-analytics|googletagmanager|doubleclick|google-syndication|facebook\.(com|net)|hotjar|segment\.(io|com)|mixpanel|sentry\.io|fullstory|intercom\.io|amplitude\.com|clarity\.ms|newrelic\.com|cloudflareinsights\.com|bugsnag\.com|pendo\.io|snowplow)/i;
+
+function isThirdPartyNoise(text) {
+  return THIRD_PARTY_NOISE.test(text || "");
+}
+
+function isFavicon(url) {
+  return /\/favicon\.ico(\?|$)/i.test(url || "");
+}
+
 export function detectBugs(findings) {
   const bugs = [];
 
   for (const err of findings.consoleErrors.slice(0, 20)) {
+    const noise = isThirdPartyNoise(err);
     bugs.push({
       category: "Functionality",
-      severity: "critical",
-      title: "JavaScript console error",
-      description: err,
+      severity: noise ? "info" : "critical",
+      title: noise ? "Third-party script error" : "JavaScript console error",
+      description: noise
+        ? `A third-party script logged an error: ${err}. Usually a vendor-side issue, not a bug in this site's own code.`
+        : err,
       location: "Browser console",
-      suggestedFix: "Inspect the stack trace and fix the throwing script; verify no dependent features rely on it.",
+      suggestedFix: noise
+        ? "Usually safe to ignore unless a real feature depends on this script."
+        : "Inspect the stack trace and fix the throwing script; verify no dependent features rely on it.",
     });
   }
 
   for (const req of findings.failedRequests.slice(0, 20)) {
+    if (isFavicon(req.url)) {
+      bugs.push({
+        category: "Functionality",
+        severity: "info",
+        title: "Missing favicon",
+        description: `${req.url} returned ${req.status || "an error"}. Harmless — just a missing browser-tab icon, no functional impact.`,
+        location: req.url,
+        suggestedFix: 'Add a favicon.ico, or a <link rel="icon"> pointing elsewhere — purely cosmetic otherwise.',
+      });
+      continue;
+    }
+    const noise = isThirdPartyNoise(req.url);
     bugs.push({
       category: "Functionality",
-      severity: req.status && req.status < 500 ? "warning" : "critical",
-      title: `Network request failed${req.status ? ` (${req.status})` : ""}`,
-      description: req.url,
+      severity: noise ? "info" : req.status && req.status < 500 ? "warning" : "critical",
+      title: `${noise ? "Third-party analytics request failed" : "Network request failed"}${req.status ? ` (${req.status})` : ""}`,
+      description: noise
+        ? `A third-party tracking/analytics beacon failed to reach ${req.url}. Doesn't affect site functionality, only that vendor's own data collection.`
+        : req.url,
       location: req.url,
-      suggestedFix: "Verify the endpoint exists and returns a successful response; check CORS/auth if applicable.",
+      suggestedFix: noise
+        ? "Usually safe to ignore. If it's meant to track real usage, check the vendor snippet/config is current."
+        : "Verify the endpoint exists and returns a successful response; check CORS/auth if applicable.",
     });
   }
 
