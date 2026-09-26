@@ -29,6 +29,7 @@ html, body, #root {
 }
 
 body {
+  min-height: 100vh;
   background-image:
     radial-gradient(circle at 20% 20%, rgba(124, 77, 255, 0.12), transparent 40%),
     radial-gradient(circle at 80% 0%, rgba(0, 229, 255, 0.1), transparent 40%),

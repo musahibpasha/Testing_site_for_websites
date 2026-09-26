@@ -86,5 +86,28 @@
 }
 
 @media (max-width: 720px) {
-  .wg-navbar__links { display: none; }
+  .wg-navbar {
+    padding: 12px 0;
+  }
+
+  .wg-navbar__inner {
+    gap: 10px;
+  }
+
+  .wg-navbar__brand h1 {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .wg-navbar__links {
+    display: none;
+  }
+
+  .wg-navbar__status {
+    padding: 6px 10px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    max-width: 110px;
+    justify-content: center;
+  }
 }

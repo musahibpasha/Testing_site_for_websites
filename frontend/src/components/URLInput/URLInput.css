@@ -66,3 +66,43 @@
   font-size: 0.75rem;
   color: var(--red);
 }
+
+@media (max-width: 720px) {
+  .wg-urlinput {
+    padding: 12px 14px;
+  }
+
+  .wg-urlinput__row {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .wg-urlinput__prefix {
+    width: 100%;
+    font-size: 0.68rem;
+    line-height: 1.2;
+  }
+
+  .wg-urlinput input {
+    min-width: 0;
+    width: 100%;
+    font-size: 0.82rem;
+  }
+
+  .wg-urlinput__btn {
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 0.75rem;
+  }
+
+  .wg-urlinput__row--prompt {
+    padding-top: 10px;
+  }
+
+  .wg-urlinput__error {
+    position: static;
+    display: block;
+    margin-top: 6px;
+    font-size: 0.72rem;
+  }
+}
