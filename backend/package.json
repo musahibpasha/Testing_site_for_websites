@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch --watch-path=./routes --watch-path=./services --watch-path=./utils --watch-path=./server.js server.js",
+    "postinstall": "npx puppeteer browsers install chrome",
     "start": "node server.js"
   },
   "dependencies": {
