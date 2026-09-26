@@ -1,7 +1,18 @@
 import axios from "axios";
 
+const normalizeApiBaseUrl = () => {
+  const raw = import.meta.env.VITE_API_URL || "/api";
+  const trimmed = raw.replace(/\/+$/, "");
+
+  if (!trimmed || trimmed === "/") return "/api";
+  if (/\/api$/i.test(trimmed)) return trimmed;
+  return `${trimmed}/api`;
+};
+
+const API_BASE_URL = normalizeApiBaseUrl();
+
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: API_BASE_URL,
   timeout: 15000,
 });
 
@@ -20,7 +31,8 @@ export async function getReport(jobId) {
 // Backend should expose GET /api/test/:jobId/stream as text/event-stream
 // emitting named events: log, status, bug, report, error.
 export function subscribeToTestStream(jobId, handlers = {}) {
-  const source = new EventSource(`/api/test/${jobId}/stream`);
+  const eventSourceUrl = `${API_BASE_URL.replace(/\/$/, "")}/test/${jobId}/stream`;
+  const source = new EventSource(eventSourceUrl);
 
   source.addEventListener("log", (e) => handlers.onLog?.(JSON.parse(e.data)));
   source.addEventListener("status", (e) => handlers.onStatus?.(JSON.parse(e.data).status));
