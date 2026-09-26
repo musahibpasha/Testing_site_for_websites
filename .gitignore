@@ -3,6 +3,12 @@ node_modules/
 backend/node_modules/
 frontend/node_modules/
 
+# Puppeteer's downloaded Chrome binary (kept in-project so Render's
+# build step and running service both use the same location — see
+# backend/.puppeteerrc.cjs — but it's large and machine-specific,
+# so it shouldn't be committed to git)
+backend/.cache/
+
 # Build outputs & staging
 dist/
 frontend/dist/
