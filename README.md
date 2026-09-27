@@ -105,12 +105,14 @@ Create a `.env` file inside `frontend/` for Vercel deployment:
 
 ```env
 VITE_API_URL=https://your-backend-url
+VITE_API_TIMEOUT_MS=60000
 ```
 
 Example:
 
 ```env
 VITE_API_URL=https://testing-site-for-websites.onrender.com
+VITE_API_TIMEOUT_MS=60000
 ```
 
 ## API routes
