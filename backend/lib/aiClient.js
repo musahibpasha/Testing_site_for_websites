@@ -54,6 +54,7 @@ const PROVIDERS = [
         body: JSON.stringify({
           model: process.env.OPENROUTER_MODEL || "meta-llama/llama-3.1-8b-instruct:free",
           messages,
+          max_tokens: 600,
         }),
       });
       if (!res.ok) throw new Error(`openrouter responded ${res.status}: ${await res.text()}`);
@@ -76,7 +77,7 @@ const PROVIDERS = [
           parts: [{ text: m.content }],
         }));
 
-      const model = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+      const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
       const res = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${process.env.GEMINI_API_KEY}`,
         {
